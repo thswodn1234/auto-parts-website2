@@ -1,86 +1,132 @@
 /* Hero.css */
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: calc(var(--spacing-xl) * 2) 0;
-    margin-top: 70px; /* 헤더 높이만큼 margin */
-    background: linear-gradient(120deg, var(--white) 50%, var(--light-gray) 50%);
-    overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center; /* 세로 중앙 정렬 유지 */
+  justify-content: space-between; /* 가로 방향으로 공간 분배 */
+  padding: calc(var(--spacing-xl) * 2) var(--spacing-lg); /* 상하 padding 약간 줄임 */
+  margin-top: 70px;
+  background: var(--light-gray);
+  overflow: hidden;
+  min-height: 450px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: var(--spacing-lg);
+  align-items: center; /* 내용 중앙 정렬 (가로) */
+}
+
+/* 버튼 위치 및 크기 조정 */
+.hero-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  /* margin-top 제거 */
+  width: 100%; /* 부모 너비만큼 차지 */
+  justify-content: center; /* 버튼들 중앙 정렬 (가로) */
+}
+
+.hero-buttons .button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  flex: 1; /* 버튼들이 동일한 비율로 너비 차지 */
+  max-width: 200px; /* 버튼 최대 너비 제한 (선택 사항) */
+}
+
+.hero-buttons .button:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.hero-buttons .button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-buttons .button-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.hero-buttons .button-primary:hover {
+  background-color: #005bb3;
+}
+
+.hero-buttons .button-secondary {
+  background-color: var(--white);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.hero-buttons .button-secondary:hover {
+  background-color: rgba(0, 113, 227, 0.1);
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: var(--spacing-lg);
+}
+
+.hero-image img {
+  max-width: 90%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease-in-out;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 992px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-lg); /* 상하 padding 줄임 */
+    text-align: center;
+    min-height: auto;
   }
-  
+
   .hero-content {
-    flex: 1;
-    max-width: 600px;
-    padding: 0 var(--spacing-lg);
-  }
-  
-  .hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: var(--spacing-md);
-    line-height: 1.1;
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--mid-gray);
-    margin-bottom: var(--spacing-lg);
-  }
-  
-  .hero-buttons {
-    display: flex;
-    gap: var(--spacing-md);
-  }
-  
-  .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+    padding-right: 0;
+    margin-bottom: var(--spacing-xl);
     align-items: center;
-    padding: 0 var(--spacing-lg);
   }
-  
+
+  .hero-buttons {
+    width: 80%; /* 모바일에서 버튼 너비 조정 */
+    /* margin-top 제거 */
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column; /* 버튼 세로 배치 */
+    align-items: stretch;
+    gap: var(--spacing-sm);
+    /* margin-top 제거 */
+    width: 100%; /* 작은 화면에서 전체 너비 */
+  }
+
   .hero-image img {
-    max-width: 50%;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    /* 미래적인 자동차 내부 또는 인터페이스 스타일 */
-    transform: perspective(1000px) rotateY(10deg); /* 기존 회전 방향 변경 */
-    transition: transform 0.5s ease;
+    max-width: 100%;
   }
-  
-  .hero-image img:hover {
-    transform: perspective(1000px) rotateY(0);
-  }
-  
-  @media (max-width: 992px) {
-    .hero {
-      flex-direction: column;
-      padding: var(--spacing-xl) 0;
-      background: var(--white);
-    }
-  
-    .hero-content {
-      text-align: center;
-      margin-bottom: var(--spacing-xl);
-      padding: 0 var(--spacing-md);
-    }
-  
-    .hero-title {
-      font-size: 2.5rem;
-    }
-  
-    .hero-buttons {
-      justify-content: center;
-    }
-  
-    .hero-image img {
-      transform: none; /* 모바일에서는 회전 효과 제거 */
-      max-width: 80%; /* 모바일에서 이미지 비율 조정 */
-    }
-  }
+}

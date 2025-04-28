@@ -1,0 +1,35 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+}
+
+.not-found-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-color); /* index.css 변수 사용 */
+}
+
+.not-found-message {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--mid-gray); /* index.css 변수 사용 */
+}
+
+.not-found-link {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color); /* index.css 변수 사용 */
+  color: var(--white); /* index.css 변수 사용 */
+  text-decoration: none;
+  border-radius: var(--radius-sm); /* index.css 변수 사용 */
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.not-found-link:hover {
+  background-color: #0077ed; /* hover 시 약간 어두운 색상 */
+}
