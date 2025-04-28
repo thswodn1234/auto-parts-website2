@@ -1,0 +1,86 @@
+/* Hero.css */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(var(--spacing-xl) * 2) 0;
+    margin-top: 70px; /* 헤더 높이만큼 margin */
+    background: linear-gradient(120deg, var(--white) 50%, var(--light-gray) 50%);
+    overflow: hidden;
+  }
+  
+  .hero-content {
+    flex: 1;
+    max-width: 600px;
+    padding: 0 var(--spacing-lg);
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--mid-gray);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+  
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 var(--spacing-lg);
+  }
+  
+  .hero-image img {
+    max-width: 50%;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    /* 미래적인 자동차 내부 또는 인터페이스 스타일 */
+    transform: perspective(1000px) rotateY(10deg); /* 기존 회전 방향 변경 */
+    transition: transform 0.5s ease;
+  }
+  
+  .hero-image img:hover {
+    transform: perspective(1000px) rotateY(0);
+  }
+  
+  @media (max-width: 992px) {
+    .hero {
+      flex-direction: column;
+      padding: var(--spacing-xl) 0;
+      background: var(--white);
+    }
+  
+    .hero-content {
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+      padding: 0 var(--spacing-md);
+    }
+  
+    .hero-title {
+      font-size: 2.5rem;
+    }
+  
+    .hero-buttons {
+      justify-content: center;
+    }
+  
+    .hero-image img {
+      transform: none; /* 모바일에서는 회전 효과 제거 */
+      max-width: 80%; /* 모바일에서 이미지 비율 조정 */
+    }
+  }

@@ -1,0 +1,172 @@
+/* Home.css */
+.home-page {
+    padding: 20px;
+  }
+  
+  .hero {
+    background-color: #f8f8f8;
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-secondary {
+    background-color: #6c757d;
+  }
+  
+  .button-secondary:hover {
+    background-color: #545b62;
+  }
+  
+  /* Features Section 스타일 */
+  .features-section {
+    padding: 60px 20px;
+    background-color: #fff; /* 필요에 따라 변경 */
+  }
+  
+  .features-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .features-section .section-title {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+  }
+  
+  .features-section .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  
+  .features-section .feature-card {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .features-section .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .features-section .feature-icon {
+    font-size: 2.5em; /* 아이콘 크기 키움 */
+    color: #007bff; /* 아이콘 색상 */
+    margin-bottom: 15px;
+  }
+  
+  .features-section .feature-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.3em; /* 제목 크기 약간 키움 */
+    font-weight: bold; /* 제목 굵게 */
+  }
+  
+  .features-section .feature-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1em;
+  }
+  
+  /* CTA Section 스타일 (기존과 동일) */
+  .cta-section {
+    background-color: #e9ecef;
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .cta-content p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 60px 15px;
+    }
+  
+    .hero-title {
+      font-size: 2em;
+    }
+  
+    .hero-subtitle {
+      font-size: 1em;
+    }
+  
+    .features-section {
+      padding: 40px 15px;
+    }
+  
+    .features-section .section-title {
+      font-size: 1.8em;
+      margin-bottom: 30px;
+    }
+  
+    .features-section .features-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .features-section .feature-card {
+      padding: 20px;
+    }
+  
+    .cta-section {
+      padding: 60px 15px;
+    }
+  
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .button {
+      margin: 10px 0;
+    }
+  }
