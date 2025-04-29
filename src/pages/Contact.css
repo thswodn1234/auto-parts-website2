@@ -1,163 +1,174 @@
 /* src/pages/Contact.css */
 .contact-page {
-    padding-top: 70px; /* Adjust based on your header height */
-  }
-  
-  /* Contact Hero Section */
-  .contact-hero {
-    background-color: var(--light-gray);
-    padding: var(--spacing-xl) 0;
-    text-align: center;
-  }
-  
-  .contact-hero .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-  }
-  
+  padding-top: 80px; /* 헤더 높이에 따라 조정 */
+}
+
+/* 공통 스타일 */
+.container {
+  max-width: 1200px; /* 좀 더 넓은 화면 지원 */
+  margin: 0 auto;
+  padding: 0 20px; /* 좌우 여백 통일 */
+}
+
+.section-title {
+  font-size: 2.2rem; /* 약간 줄임 */
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+/* Contact Hero Section */
+.contact-hero {
+  background-color: var(--light-gray);
+  padding: var(--spacing-lg) 0; /* 다른 섹션과 간격 통일 */
+  text-align: center;
+}
+
+.contact-hero .hero-title {
+  font-size: 2.8rem; /* 약간 줄임 */
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-hero .hero-subtitle {
+  font-size: 1.1rem; /* 약간 줄임 */
+  color: var(--mid-gray);
+  line-height: 1.6;
+}
+
+/* Contact Form Section */
+.contact-form-section {
+  padding: var(--spacing-lg) 0;
+  background-color: var(--white);
+}
+
+.contact-form-section .container {
+  max-width: 768px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-md); /* 폼 그룹 하단 간격 추가 */
+}
+
+.form-group label {
+  font-size: 0.9rem; /* 레이블 크기 약간 줄임 */
+  color: var(--dark-gray);
+  margin-bottom: 5px; /* 레이블-입력 필드 간 간격 조정 */
+}
+
+.form-group input[type='text'],
+.form-group input[type='email'],
+.form-group input[type='tel'],
+.form-group textarea {
+  padding: 10px; /* padding 값 조정 */
+  border: 1px solid #ccc; /* 테두리 색상 변경 */
+  border-radius: 5px; /* 둥근 정도 조정 */
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px; /* 최소 높이 설정 */
+}
+
+.submit-button {
+  padding: 12px 24px; /* padding 값 조정 */
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 8px; /* 둥근 정도 조정 */
+  font-size: 1.1rem;
+  font-weight: 500; /* 글꼴 굵기 약간 조정 */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out; /* transition 속도 조정 */
+}
+
+.submit-button:hover {
+  background-color: var(--primary-color-darker); /* 호버 시 좀 더 어두운 색상 */
+}
+
+/* Contact Info Section */
+.contact-info-section {
+  padding: var(--spacing-lg) 0;
+  background-color: var(--white-smoke);
+}
+
+.contact-info-section .container {
+  max-width: 960px;
+}
+
+.contact-info-section .contact-details {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* 최소 너비 조정 */
+  gap: var(--spacing-md); /* 간격 줄임 */
+}
+
+.contact-info-section .detail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 15px; /* padding 값 조정 */
+  border-radius: 5px;
+  background-color: var(--white);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 그림자 약하게 조정 */
+}
+
+.contact-info-section .detail-item i {
+  font-size: 1.3rem; /* 아이콘 크기 약간 줄임 */
+  color: var(--primary-color);
+}
+
+.contact-info-section .detail-item p {
+  font-size: 0.95rem; /* 폰트 크기 약간 줄임 */
+  color: var(--dark-gray);
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .contact-hero .hero-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-md);
+    font-size: 2.2rem;
   }
-  
-  .contact-hero .hero-subtitle {
-    font-size: 1.2rem;
-    color: var(--mid-gray);
-    line-height: 1.6;
-  }
-  
-  /* Contact Form Section */
-  .contact-form-section {
-    padding: var(--spacing-xl) 0;
-    background-color: var(--white);
-  }
-  
-  .contact-form-section .container {
-    max-width: 768px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-  }
-  
+
   .contact-form-section .section-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
+    font-size: 1.8rem;
   }
-  
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group label {
-    font-size: 1rem;
-    color: var(--dark-gray);
-    margin-bottom: var(--spacing-sm);
-  }
-  
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="tel"],
-  .form-group textarea {
-    padding: var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    font-size: 1rem;
-  }
-  
-  .form-group textarea {
-    resize: vertical;
-  }
-  
-  .submit-button {
-    padding: var(--spacing-md) var(--spacing-lg);
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
-    border-radius: var(--radius-md);
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-button:hover {
-    background-color: var(--primary-color-dark);
-  }
-  
-  /* Contact Info Section */
-  .contact-info-section {
-    padding: var(--spacing-lg) 0;
-    background-color: var(--white-smoke);
-  }
-  
-  .contact-info-section .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-  }
-  
+
   .contact-info-section .section-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
+    font-size: 1.8rem;
   }
-  
+
   .contact-info-section .contact-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: 1fr;
   }
-  
-  .contact-info-section .detail-item {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    background-color: var(--white);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  }
-  
-  .contact-info-section .detail-item i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-  }
-  
-  .contact-info-section .detail-item p {
+}
+
+@media (max-width: 480px) {
+  .contact-hero .hero-subtitle {
     font-size: 1rem;
-    color: var(--dark-gray);
-    line-height: 1.6;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .contact-hero .hero-title {
-      font-size: 2.5rem;
-    }
-  
-    .contact-form-section .section-title {
-      font-size: 2rem;
-    }
-  
-    .contact-info-section .section-title {
-      font-size: 2rem;
-    }
-  
-    .contact-info-section .contact-details {
-      grid-template-columns: 1fr;
-    }
+
+  .contact-form .form-group label {
+    font-size: 0.85rem;
   }
+
+  .contact-form .form-group input,
+  .contact-form .form-group textarea,
+  .submit-button,
+  .contact-info-section .detail-item p {
+    font-size: 0.9rem;
+  }
+}
