@@ -1,66 +1,148 @@
-// src/pages/Contact.js
-import React from 'react';
+import React, { useState } from 'react';
 import './Contact.css';
 
 const Contact = () => {
-  return (
-    <div className="contact-page">
-      <section className="contact-hero">
-        <div className="container">
-          <h1 className="hero-title">문의하기</h1>
-          <p className="hero-subtitle">궁금한 점이나 문의사항을 보내주시면 친절하게 답변드리겠습니다.</p>
-        </div>
-      </section>
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  });
+  const [submissionStatus, setSubmissionStatus] = useState('');
+  const googleAppsScriptUrl =
+    'https://script.google.com/macros/s/AKfycbzCtp2O2RTZhWy16FBFD7-TtRRPVSfrFwGaAnedOPujr3T7EvOCTlEsFJlaB2ED2O44/exec'; // 여기에 복사한 웹 앱 URL을 넣어주세요.
 
-      <section className="contact-form-section">
-        <div className="container">
-          <h2 className="section-title">문의 양식</h2>
-          <form className="contact-form">
-            <div className="form-group">
-              <label htmlFor="name">이름</label>
-              <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required />
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmissionStatus('제출 중...');
+
+    try {
+      const response = await fetch(googleAppsScriptUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok || response.status === 0) {
+        // no-cors 모드에서는 response.json()을 직접 사용할 수 없을 수 있습니다.
+        // 서버에서 성공적인 응답 (예: 상태 코드 200)을 보내도록 하고,
+        // 단순히 성공 메시지를 표시하는 것이 안전할 수 있습니다.
+        setSubmissionStatus('문의가 성공적으로 제출되었습니다.');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        // 오류 발생 시
+        let errorMessage = '문의 제출에 실패했습니다. 다시 시도해주세요.';
+        try {
+          const errorData = await response.json();
+          if (errorData && errorData.message) {
+            errorMessage = `문의 제출에 실패했습니다: ${errorData.message}`;
+          }
+        } catch (parseError) {
+          console.error('응답 데이터 파싱 오류:', parseError);
+        }
+        setSubmissionStatus(errorMessage);
+      }
+    } catch (error) {
+      console.error('문의 제출 오류:', error);
+      setSubmissionStatus('오류가 발생했습니다. 다시 시도해주세요.');
+    }
+  };
+
+  return (
+    <div className='contact-page'>
+      {/* ... 기존 코드 ... */}
+      <section className='contact-form-section'>
+        <div className='container'>
+          <h2 className='section-title'>문의 양식</h2>
+          <form className='contact-form' onSubmit={handleSubmit}>
+            <div className='form-group'>
+              <label htmlFor='name'>이름</label>
+              <input
+                type='text'
+                id='name'
+                name='name'
+                placeholder='이름을 입력해주세요'
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
             </div>
-            <div className="form-group">
-              <label htmlFor="email">이메일</label>
-              <input type="email" id="email" name="email" placeholder="이메일 주소를 입력해주세요" required />
+            <div className='form-group'>
+              <label htmlFor='email'>이메일</label>
+              <input
+                type='email'
+                id='email'
+                name='email'
+                placeholder='이메일 주소를 입력해주세요'
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
-            <div className="form-group">
-              <label htmlFor="phone">연락처 (선택)</label>
-              <input type="tel" id="phone" name="phone" placeholder="연락처를 입력해주세요" />
+            <div className='form-group'>
+              <label htmlFor='phone'>연락처 (선택)</label>
+              <input
+                type='tel'
+                id='phone'
+                name='phone'
+                placeholder='연락처를 입력해주세요'
+                value={formData.phone}
+                onChange={handleChange}
+              />
             </div>
-            <div className="form-group">
-              <label htmlFor="subject">제목</label>
-              <input type="text" id="subject" name="subject" placeholder="문의 제목을 입력해주세요" required />
+            <div className='form-group'>
+              <label htmlFor='subject'>제목</label>
+              <input
+                type='text'
+                id='subject'
+                name='subject'
+                placeholder='문의 제목을 입력해주세요'
+                value={formData.subject}
+                onChange={handleChange}
+                required
+              />
             </div>
-            <div className="form-group">
-              <label htmlFor="message">문의 내용</label>
-              <textarea id="message" name="message" rows="8" placeholder="문의 내용을 입력해주세요" required></textarea>
+            <div className='form-group'>
+              <label htmlFor='message'>문의 내용</label>
+              <textarea
+                id='message'
+                name='message'
+                rows='8'
+                placeholder='문의 내용을 입력해주세요'
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
             </div>
-            <button type="submit" className="submit-button">문의 보내기</button>
+            <button
+              type='submit'
+              className='submit-button'
+              disabled={submissionStatus === '제출 중...'}
+            >
+              {submissionStatus || '문의 보내기'}
+            </button>
           </form>
         </div>
       </section>
-
-      <section className="contact-info-section">
-        <div className="container">
-          <h2 className="section-title">연락처 정보</h2>
-          <div className="contact-details">
-            <div className="detail-item">
-              <i className="fas fa-map-marker-alt"></i>
-              <p>서울특별시 강남구 [회사 주소]</p>
-            </div>
-            <div className="detail-item">
-              <i className="fas fa-phone"></i>
-              <p>[회사 전화번호]</p>
-            </div>
-            <div className="detail-item">
-              <i className="fas fa-envelope"></i>
-              <p>[회사 이메일 주소]</p>
-            </div>
-            {/* 추가적인 연락처 정보 (팩스, 소셜 미디어 등) */}
-          </div>
-        </div>
-      </section>
+      {/* ... 기존 코드 ... */}
     </div>
   );
 };
