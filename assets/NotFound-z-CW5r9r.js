@@ -1,1 +1,0 @@
-import{j as n,L as s}from"./index-DjHpsVCE.js";function e(){return n.jsxs("div",{className:"not-found-container",children:[n.jsx("h1",{className:"not-found-title",children:"404"}),n.jsx("p",{className:"not-found-message",children:"죄송합니다. 페이지를 찾을 수 없습니다."}),n.jsx(s,{to:"/",className:"not-found-link",children:"홈으로 돌아가기"})]})}export{e as default};
