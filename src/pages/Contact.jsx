@@ -11,7 +11,7 @@ const Contact = () => {
   });
   const [submissionStatus, setSubmissionStatus] = useState('');
   const googleAppsScriptUrl =
-    'https://script.google.com/macros/s/AKfycbzCtp2O2RTZhWy16FBFD7-TtRRPVSfrFwGaAnedOPujr3T7EvOCTlEsFJlaB2ED2O44/exec'; // 여기에 복사한 웹 앱 URL을 넣어주세요.
+    'https://script.google.com/macros/s/AKfycbzGeF-qYVKF-rexRWxETIKU3aCFx5modQE218jbASBqEdURRK4_L3g-tEt6rMvh_riA/exec'; // 여기에 복사한 웹 앱 URL을 넣어주세요.
 
   const handleChange = (e) => {
     const { name, value } = e.target;

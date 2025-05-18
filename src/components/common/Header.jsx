@@ -26,34 +26,54 @@ const Header = () => {
 
   return (
     <header className={`header ${scrolled ? 'header-scrolled' : ''}`}>
-      <div className="container header-container">
-        <Link to="/" className="logo">
-          <h1>AutoParts</h1>
+      <div className='container header-container'>
+        <Link to='/' className='logo'>
+          <h1>LSK</h1>
         </Link>
-        
-        <button 
-          className={`menu-toggle ${menuOpen ? 'active' : ''}`} 
+
+        <button
+          className={`menu-toggle ${menuOpen ? 'active' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label='Toggle menu'
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
-        
+
         <nav className={`nav ${menuOpen ? 'nav-open' : ''}`}>
-          <ul className="nav-list">
-            <li className="nav-item">
-              <Link to="/" className={location.pathname === '/' ? 'active' : ''}>홈</Link>
+          <ul className='nav-list'>
+            <li className='nav-item'>
+              <Link
+                to='/'
+                className={location.pathname === '/' ? 'active' : ''}
+              >
+                홈
+              </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>회사소개</Link>
+            <li className='nav-item'>
+              <Link
+                to='/about'
+                className={location.pathname === '/about' ? 'active' : ''}
+              >
+                회사소개
+              </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/products" className={location.pathname === '/products' ? 'active' : ''}>제품</Link>
+            <li className='nav-item'>
+              <Link
+                to='/products'
+                className={location.pathname === '/products' ? 'active' : ''}
+              >
+                제품
+              </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>문의</Link>
+            <li className='nav-item'>
+              <Link
+                to='/contact'
+                className={location.pathname === '/contact' ? 'active' : ''}
+              >
+                문의
+              </Link>
             </li>
           </ul>
         </nav>

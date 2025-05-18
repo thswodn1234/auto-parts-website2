@@ -5,7 +5,7 @@ import { productsData } from '../../data/productsData'; // productsData import
 
 const FeaturedProducts = () => {
   // productsData에서 처음 4개 제품만 가져오기 (인기 제품으로 가정)
-  const featured = productsData.slice(0, 4);
+  const featured = productsData.slice(0, 3);
 
   return (
     <section className='section featured-products'>
